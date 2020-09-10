@@ -20,6 +20,8 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run:
+        dotnet build ./WindowsAzure/WindowsAzure.csproj --framework netstandard1.3 --configuration Release --no-restore
+        dotnet build ./WindowsAzure.Tests/WindowsAzure.Tests.csproj --framework netcoreapp3 --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
