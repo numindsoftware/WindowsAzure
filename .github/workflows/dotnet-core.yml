@@ -29,4 +29,6 @@ jobs:
     - name: Test
       run: dotnet test --framework netcoreapp3 --no-restore --verbosity normal
     - name: Publish
-      run: dotnet nuget push ./WindowsAzure/bin/Release/*.nupkg --skip-duplicate --no-symbols true
+      run: |
+        dotnet nuget pack ./WindowsAzure/WindowsAzure.csproj --configuration Release --no-restore --no-build --no-symbols true -p:TargetFramworks=netstandard1.3
+        dotnet nuget push ./WindowsAzure/bin/Release/*.nupkg --skip-duplicate --no-symbols true
