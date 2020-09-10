@@ -23,6 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsAzure.Tests", "Windo
 		{489A3BD0-35AF-4E8E-939F-6597125603B7} = {489A3BD0-35AF-4E8E-939F-6597125603B7}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B40D8564-F7CB-47EB-89AC-D96F96FA0810}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{D7ABA64A-21E3-479F-A2C3-B26CFE7B4032}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +47,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D7ABA64A-21E3-479F-A2C3-B26CFE7B4032} = {B40D8564-F7CB-47EB-89AC-D96F96FA0810}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FEDDDB4-B550-4286-BF76-42A84A9421E2}
