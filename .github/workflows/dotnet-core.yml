@@ -17,9 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
-        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
-      env: 
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
     - name: Install dependencies
       run: dotnet restore
     - name: Build
@@ -29,6 +27,8 @@ jobs:
     - name: Test
       run: dotnet test --framework netcoreapp3 --no-restore --verbosity normal
     - name: Publish
+      env: 
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: |
         dotnet pack ./WindowsAzure/WindowsAzure.csproj --configuration Release --no-restore --no-build -p:TargetFramworks=netstandard1.3
         dotnet nuget push ./WindowsAzure/bin/Release/*.nupkg --skip-duplicate --no-symbols true
