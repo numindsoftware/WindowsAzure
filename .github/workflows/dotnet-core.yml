@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run:
+      run: |
         dotnet build ./WindowsAzure/WindowsAzure.csproj --framework netstandard1.3 --configuration Release --no-restore
         dotnet build ./WindowsAzure.Tests/WindowsAzure.Tests.csproj --framework netcoreapp3 --configuration Release --no-restore
     - name: Test
