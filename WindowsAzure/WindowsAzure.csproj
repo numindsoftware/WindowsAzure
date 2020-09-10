@@ -5,7 +5,7 @@
             It's built on top of Azure Storage Client Library, provides LINQ to Azure Tables queries and async interfaces.</Description>
     <AssemblyTitle>Azure Storage Extensions</AssemblyTitle>
     <Authors>Dmitry Tretyakov</Authors>
-    <TargetFrameworks>net452;net46;netstandard1.3</TargetFrameworks>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>WindowsAzure.StorageExtensions</AssemblyName>
     <PackageId>WindowsAzure.StorageExtensions</PackageId>
     <PackageTags>Azure;Storage;Blob;Table;Async;Extensions;LINQ;IQueryable</PackageTags>
@@ -18,13 +18,6 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.2" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
-    <Reference Include="System.Xml" />
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
     <PackageReference Include="System.Linq.Parallel" Version="4.3.0" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
