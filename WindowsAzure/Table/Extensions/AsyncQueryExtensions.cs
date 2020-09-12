@@ -46,13 +46,13 @@ namespace WindowsAzure.Table.Extensions
         public static Task<List<T>> ToListAsync<T>(
             this IQueryable<T> source,
             Expression<Func<T, bool>> predicate,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
             if (tableQueryProvider == null)
             {
-                return TaskHelpers.FromResult(source.ToList());
+                return TaskHelpers.FromResult(source.Where(predicate).ToList());
             }
 
             return tableQueryProvider.ExecuteAsync(source.Where(predicate).Expression, cancellationToken)
@@ -70,7 +70,7 @@ namespace WindowsAzure.Table.Extensions
         public static Task<List<T>> TakeAsync<T>(
             this IQueryable<T> source,
             int count,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
@@ -92,7 +92,7 @@ namespace WindowsAzure.Table.Extensions
         /// <returns>Entity.</returns>
         public static Task<T> FirstAsync<T>(
             this IQueryable<T> source,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
@@ -116,13 +116,13 @@ namespace WindowsAzure.Table.Extensions
         public static Task<T> FirstAsync<T>(
             this IQueryable<T> source,
             Expression<Func<T,bool>> predicate,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
             if (tableQueryProvider == null)
             {
-                return TaskHelpers.FromResult(source.First());
+                return TaskHelpers.FromResult(source.First(predicate));
             }
 
             return tableQueryProvider.ExecuteAsync(source.Where(predicate).Take(1).Expression, cancellationToken)
@@ -138,7 +138,7 @@ namespace WindowsAzure.Table.Extensions
         /// <returns>Entity.</returns>
         public static Task<T> FirstOrDefaultAsync<T>(
             this IQueryable<T> source,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
@@ -162,13 +162,13 @@ namespace WindowsAzure.Table.Extensions
         public static Task<T> FirstOrDefaultAsync<T>(
             this IQueryable<T> source,
             Expression<Func<T, bool>> predicate,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
             if (tableQueryProvider == null)
             {
-                return TaskHelpers.FromResult(source.FirstOrDefault());
+                return TaskHelpers.FromResult(source.FirstOrDefault(predicate));
             }
 
             return tableQueryProvider.ExecuteAsync(source.Where(predicate).Take(1).Expression, cancellationToken)
@@ -184,7 +184,7 @@ namespace WindowsAzure.Table.Extensions
         /// <returns>Entity.</returns>
         public static Task<T> SingleAsync<T>(
             this IQueryable<T> source,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
@@ -208,7 +208,7 @@ namespace WindowsAzure.Table.Extensions
         public static Task<T> SingleAsync<T>(
             this IQueryable<T> source,
             Expression<Func<T, bool>> predicate,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
@@ -230,7 +230,7 @@ namespace WindowsAzure.Table.Extensions
         /// <returns>Entity.</returns>
         public static Task<T> SingleOrDefaultAsync<T>(
             this IQueryable<T> source,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 
@@ -254,7 +254,7 @@ namespace WindowsAzure.Table.Extensions
         public static Task<T> SingleOrDefaultAsync<T>(
             this IQueryable<T> source,
             Expression<Func<T, bool>> predicate,
-            CancellationToken cancellationToken = default (CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var tableQueryProvider = source.Provider as IAsyncQueryProvider;
 

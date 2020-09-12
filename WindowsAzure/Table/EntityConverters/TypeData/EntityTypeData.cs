@@ -188,23 +188,9 @@ namespace WindowsAzure.Table.EntityConverters.TypeData
         /// <param name="attributes">Entity attributes.</param>
         /// <returns>Metadata attributes.</returns>
         private static IList<object> SelectMetadataAttributes(object[] attributes)
-        {
-            var selectedAttributes = new List<object>();
-
-            for (var i = 0; i < attributes.Length; i++)
-            {
-                var attributeType = attributes[i].GetType();
-
-                if (!PropertyFactories.ContainsKey(attributeType))
-                {
-                    continue;
-                }
-
-                selectedAttributes.Add(attributes[i]);
-            }
-
-            return selectedAttributes;
-        }
+            => (from attribute in attributes
+                where PropertyFactories.ContainsKey(attribute.GetType())
+                select attribute).ToList();
 
         // ReSharper disable ForCanBeConvertedToForeach
 
